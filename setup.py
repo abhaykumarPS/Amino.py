@@ -32,7 +32,7 @@ setup(
         "requests",
         "six",
         "websockets",
-        "websocket-client==0.57.0",
+        "websocket-client==1.3.1",
         "aiohttp"
     ],
     setup_requires = [

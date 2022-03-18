@@ -44,11 +44,11 @@ class SocketHandler:
                 self.close()
                 self.run_amino_socket()
 
-    def on_open(self):
+    def on_open(self, **kwargs):
         if self.debug is True:
             print("[socket][on_open] Socket Opened")
 
-    def on_close(self):
+    def on_close(self, **kwargs):
         if self.debug is True:
             print("[socket][on_close] Socket Closed")
 
@@ -66,7 +66,7 @@ class SocketHandler:
 
         contextlib.suppress(self.socket.sock.pong(data))
 
-    def handle_message(self, data):
+    def handle_message(self, ws, data):
         self.client.handle_socket_message(data)
         return
 
