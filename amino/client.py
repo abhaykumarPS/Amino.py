@@ -1240,13 +1240,14 @@ class Client(Callbacks, SocketHandler):
             else: res.append(response.status_code)
 
         if viewOnly is not None:
+            #fixed by Minori#6457
             if viewOnly:
-                response = self.session.post(f"{self.api}/g/s/chat/thread/{chatId}/view-only/enable", data=data, headers=self.parse_headers(data=data), proxies=self.proxies, verify=self.certificatePath)
+                response = self.session.post(f"{self.api}/g/s/chat/thread/{chatId}/view-only/enable", headers=self.parse_headers(), proxies=self.proxies, verify=self.certificatePath)
                 if response.status_code != 200: res.append(exceptions.CheckException(json.loads(response.text)))
                 else: res.append(response.status_code)
 
             if not viewOnly:
-                response = self.session.post(f"{self.api}/g/s/chat/thread/{chatId}/view-only/disable", data=data, headers=self.parse_headers(data=data), proxies=self.proxies, verify=self.certificatePath)
+                response = self.session.post(f"{self.api}/g/s/chat/thread/{chatId}/view-only/disable", headers=self.parse_headers(), proxies=self.proxies, verify=self.certificatePath)
                 if response.status_code != 200: res.append(exceptions.CheckException(json.loads(response.text)))
                 else: res.append(response.status_code)
 
